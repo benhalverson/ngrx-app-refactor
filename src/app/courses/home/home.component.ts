@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {compareCourses, Course} from '../model/course';
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {defaultDialogConfig} from '../shared/default-dialog-config';
 import {EditCourseDialogComponent} from '../edit-course-dialog/edit-course-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import {map, shareReplay} from 'rxjs/operators';
+import {map, shareReplay,} from 'rxjs/operators';
 import {CoursesHttpService} from '../services/courses-http.service';
 
 
@@ -16,13 +16,13 @@ import {CoursesHttpService} from '../services/courses-http.service';
 })
 export class HomeComponent implements OnInit {
 
-    promoTotal$: Observable<number>;
+    promoTotal$: Observable<number> = of(0);
 
-    loading$: Observable<boolean>;
+    loading$: Observable<boolean> = of(false);
 
-    beginnerCourses$: Observable<Course[]>;
+    beginnerCourses$!: Observable<Course[]>;
 
-    advancedCourses$: Observable<Course[]>;
+    advancedCourses$!: Observable<Course[]>;
 
 
     constructor(

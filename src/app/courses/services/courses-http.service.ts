@@ -18,11 +18,11 @@ export class CoursesHttpService {
     findAllCourses(): Observable<Course[]> {
         return this.http.get('/api/courses')
             .pipe(
-                map(res => res['payload'])
+                map((res: any) => res['payload'])
             );
     }
 
-    findCourseByUrl(courseUrl: string): Observable<Course> {
+    findCourseByUrl(courseUrl: string | null): Observable<Course> {
       return this.http.get<Course>(`/api/courses/${courseUrl}`);
     }
 

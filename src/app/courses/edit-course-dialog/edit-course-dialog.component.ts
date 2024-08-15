@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Course} from '../model/course';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {CoursesHttpService} from '../services/courses-http.service';
 
 @Component({
@@ -12,7 +12,7 @@ import {CoursesHttpService} from '../services/courses-http.service';
 })
 export class EditCourseDialogComponent {
 
-  form: FormGroup;
+  form!: FormGroup;
 
   dialogTitle: string;
 
@@ -20,12 +20,12 @@ export class EditCourseDialogComponent {
 
   mode: 'create' | 'update';
 
-  loading$:Observable<boolean>;
+  loading$:Observable<boolean> = of(false);
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<EditCourseDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data,
+    @Inject(MAT_DIALOG_DATA) data: any,
     private coursesService: CoursesHttpService) {
 
     this.dialogTitle = data.dialogTitle;

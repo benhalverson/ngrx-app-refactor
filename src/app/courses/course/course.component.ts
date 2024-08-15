@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Course} from '../model/course';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Lesson} from '../model/lesson';
 import {concatMap, delay, filter, first, map, shareReplay, tap, withLatestFrom} from 'rxjs/operators';
 import {CoursesHttpService} from '../services/courses-http.service';
@@ -14,9 +14,12 @@ import {CoursesHttpService} from '../services/courses-http.service';
 })
 export class CourseComponent implements OnInit {
 
-  course$: Observable<Course>;
+  course$!: Observable<Course>;
 
-  lessons$: Observable<Lesson[]>;
+  lessons$: Observable<Lesson[]> = of([])
+
+  loading$: Observable<boolean> = of(false);
+
 
   displayedColumns = ['seqNo', 'description', 'duration'];
 
