@@ -48,6 +48,7 @@ const routes: Routes = [
         MatProgressSpinnerModule,
         MatListModule,
         MatToolbarModule,
-        AuthModule.forRoot()], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        AuthModule.forRoot(),
+        StoreModule.forRoot({}, {})], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {
 }
