@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
 
 import { Store } from "@ngrx/store";
 
@@ -9,11 +9,17 @@ import { noop } from "rxjs";
 import { Router } from "@angular/router";
 import { AppState } from '../reducers';
 import { login } from '../auth.actions';
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: true,
+    imports: [MatCard, MatCardTitle, MatCardContent, ReactiveFormsModule, MatFormField, MatInput, MatButton]
 })
 export class LoginComponent implements OnInit {
 

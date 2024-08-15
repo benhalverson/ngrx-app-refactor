@@ -6,13 +6,21 @@ import {EditCourseDialogComponent} from '../edit-course-dialog/edit-course-dialo
 import { MatDialog } from '@angular/material/dialog';
 import {map, shareReplay,} from 'rxjs/operators';
 import {CoursesHttpService} from '../services/courses-http.service';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { CoursesCardListComponent } from '../courses-card-list/courses-card-list.component';
 
 
 
 @Component({
     selector: 'home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    styleUrls: ['./home.component.css'],
+    standalone: true,
+    imports: [MatMiniFabButton, MatIcon, NgIf, MatProgressSpinner, MatTabGroup, MatTab, CoursesCardListComponent, AsyncPipe]
 })
 export class HomeComponent implements OnInit {
 

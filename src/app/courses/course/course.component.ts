@@ -5,12 +5,18 @@ import {Observable, of} from 'rxjs';
 import {Lesson} from '../model/lesson';
 import {concatMap, delay, filter, first, map, shareReplay, tap, withLatestFrom} from 'rxjs/operators';
 import {CoursesHttpService} from '../services/courses-http.service';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatButton } from '@angular/material/button';
 
 
 @Component({
-  selector: 'course',
-  templateUrl: './course.component.html',
-  styleUrls: ['./course.component.css']
+    selector: 'course',
+    templateUrl: './course.component.html',
+    styleUrls: ['./course.component.css'],
+    standalone: true,
+    imports: [NgIf, MatProgressSpinner, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatButton, AsyncPipe]
 })
 export class CourseComponent implements OnInit {
 
